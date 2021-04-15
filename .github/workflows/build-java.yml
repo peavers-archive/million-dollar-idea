@@ -1,0 +1,35 @@
+name: Build Java
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+    paths-ignore:
+      - "million-dollar-idea-ui/**" # Don't run if only a UI file has changed
+
+jobs:
+  build:
+    name: Build Java
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Using JDK 15
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v2.1.4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew build
