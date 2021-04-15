@@ -1,3 +1,3 @@
 # Example on MonoRepo GitHub Actions
 
-Gives an example of how to set up GitHub Actions when working with a MonoRepo
+Example for a [Medium post](https://chris-turner.medium.com/github-actions-and-the-monorepo-or-multi-module-511707b3578c)
