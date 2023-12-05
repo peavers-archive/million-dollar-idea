@@ -1,11 +1,7 @@
 name: Release
 
 on:
-  workflow_run:
-    workflows: ["Tag"]
-    branches: [master]
-    types:
-      - completed
+  workflow_dispatch
 
 jobs:
   release:
