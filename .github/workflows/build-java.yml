@@ -1,10 +1,7 @@
 name: Build Java
 
 on:
-  push:
-    branches:
-      - master
-      - develop
+  workflow_dispatch:
     paths-ignore:
       - "million-dollar-idea-ui/**" # Don't run if only a UI file has changed
 
